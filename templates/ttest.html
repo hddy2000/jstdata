@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T-test</title>
+</head>
+<body bgcolor="lightyellow">
+<p>{{path}}</p>
+<hr/>
+<pre>{{df}}</pre>
+<hr/>
+<pre>{{col}}</pre>
+<hr/>
+<form method="get">
+          <label for="column">请输入需要比较的连续变量</label>
+        <input  type="text" size=45 id="column"
+               name="column" onchange="getvalue()" >
+        <label for="column">请输入结局分组变量（需要是二分类变量）</label>
+        <input  type="text" size=45 id="outcome"
+               name="outcome" onchange="getvalue()" >
+        <br><input type="submit" value="Submit" >
+</form>
+<hr/>
+<p>{{column}}</p>
+<p>{{outcome}}</p>
+
+
+{% load static %}
+    <script src="{% static 'jquery-3.2.1.min.js' %}" type="text/javascript">
+    </script>
+<script type="text/javascript">
+$(document).ready(function(){
+     $("button").click(function(){
+     var col=document.getElementById('column').value
+     var out=document.getElementById('outcome').value
+     if(!(id)){id="unknown";}
+           $.ajax({
+           url:"{% url "ttest_result" %}",
+           data:{column:id,outcome:out},
+           success:function(result){$("#ask").html(result);}
+           });
+     });
+ })
+    </script>
+</body>
+</html>

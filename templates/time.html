@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASKTIME</title>
+    {% load static %}
+    <script src="{% static 'jquery-3.2.1.min.js' %}" type="text/javascript">
+    </script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+     $("button").click(function(){
+     var id=document.getElementById('name').value
+     if(!(id)){id="unknown";}
+           $.ajax({
+           url:"{% url "asktime" %}",
+           data:{name:id},
+           success:function(result){$("#ask").html(result);}
+           });
+     });
+ })
+    </script>
+
+</head>
+<body bgcolor="lightyellow">
+<div id="ask">告诉我你的名字</div>
+<input type="text" id="name">
+<button>询问</button>
+</body>
+
+
+</html>

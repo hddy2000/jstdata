@@ -16,12 +16,32 @@
       <form action=" " target="_blank" method="get">
           <label for="d">Input Data:</label>
         <input  type="text" size=45 id="d"
-               name="d" value="/Users/huangyi-mac/mystat/mystat/input_data/C13_data9.csv">
-        <br><input type="submit" value="Submit" >
+               name="d" onchange="getvalue()" value="/Users/huangyi-mac/mystat/mystat/input_data/C13_data9.csv">
+        <br><input type="submit" value="Submit Data" >
     </form>
+      <script type="text/javascript">
+          function getvalue(){
+            v=document.getElementById('d').value
+            ttest = document.getElementById('ttest')
+            ttest.href='/ttest/?d='+v
+
+          }
+      </script>
       <pre>{{df}}</pre>
       <hr/>
       <pre>{{col}}</pre>
+      <hr/>
+       <a id="ttest" href="/ttest/?d=/Users/huangyi-mac/mystat/mystat/input_data/C13_data9.csv" target="_blank">t-test</a>
+
+      <!--form action="/ttest/" target="_blank" method="get">
+          <label for="grp">分组依据:</label>
+        <input  type="text" size=45 id="grp"
+               name="grp" >
+          <label for="col">分析指标（连续变量）:</label>
+          <input  type="text" size=45 id="col"
+               name="col" >
+        <br><input type="submit" value="Submit" >
+    </form -->
       <hr/>
       <a href="https://www.dhcc.com.cn" target="_blank">东华医疗</a>
       <hr/>

@@ -73,10 +73,10 @@ class LuwakStat:
         print u'该程序将进行独立样本t检验和Wilcoxon检验。',outcome,u'作为结局','\n'
         print u'变量包含:','\n',pd.Series(pd.unique(df[outcome]))
         
-        grp0_index=input('请输入group0的Index:')
-        grp1_index=input('请输入group1的Index:')
-        grp0=pd.unique(df[outcome])[grp0_index]
-        grp1=pd.unique(df[outcome])[grp1_index]        
+        #grp0_index=input('请输入group0的Index:')
+        #grp1_index=input('请输入group1的Index:')
+        grp0=pd.unique(df[outcome])[0]
+        grp1=pd.unique(df[outcome])[1]
         
         for var in columns:
             r0=df[df[outcome]==grp0][var].dropna()
